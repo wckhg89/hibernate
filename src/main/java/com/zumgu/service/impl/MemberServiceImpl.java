@@ -2,7 +2,7 @@ package com.zumgu.service.impl;
 
 import com.zumgu.domain.Member;
 import com.zumgu.repository.MemberRepository;
-import com.zumgu.service.MemberSerivce;
+import com.zumgu.service.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class MemberServiceImpl implements MemberSerivce{
+public class MemberServiceImpl implements MemberService {
 
     @Autowired
     MemberRepository memberRepository;

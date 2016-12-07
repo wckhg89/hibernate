@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by kanghonggu on 2016-12-07.
  */
-public interface MemberSerivce {
+public interface MemberService {
     Member getMember(Long id);
     List<Member> getAllMember();
     void saveMember(Member member);

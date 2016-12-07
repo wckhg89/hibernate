@@ -20,7 +20,6 @@ public class MemberRepositoryImpl implements MemberRepository {
     @Autowired
     SessionFactory sessionFactory;
 
-
     @Override
     public Member getMember(Long id) {
 
@@ -44,7 +43,5 @@ public class MemberRepositoryImpl implements MemberRepository {
         Session session = sessionFactory.getCurrentSession();
         session.save(member);
     }
-
-
 
 }
