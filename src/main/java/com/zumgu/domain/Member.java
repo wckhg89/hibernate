@@ -42,6 +42,7 @@ public class Member {
     @Column(nullable = false)
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "content")
+    @JsonProperty
     private List<Content> contents = new ArrayList<>();
 
     public Long getId() {
