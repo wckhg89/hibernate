@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.springframework.util.StringUtils;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kanghonggu on 2016-12-07.
@@ -38,9 +37,12 @@ public class Member {
     @JsonProperty
     private String email;
 
-    @Column(nullable = false)
     @JsonProperty
     private Boolean deleted = false;
+    @Column(nullable = false)
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "content")
+    private List<Content> contents = new ArrayList<>();
 
     public Long getId() {
         return id;
