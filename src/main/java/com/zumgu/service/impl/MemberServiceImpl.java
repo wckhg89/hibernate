@@ -43,8 +43,6 @@ public class MemberServiceImpl implements MemberService {
         // 영속 컨텍스트에 의해서 관리되기 때문에 값을 바꾸어주면 쿼리를 캐시한다.
         // 메소드가 끝나면 transaction이 끝나면서 session.flush가 일어나면서 update 쿼리가 반영된다.
         member.update(newMember);
-
-
     }
 
     @Override

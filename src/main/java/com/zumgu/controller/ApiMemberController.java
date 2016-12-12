@@ -38,6 +38,9 @@ public class ApiMemberController {
     @GetMapping("/{id}")
     public ResponseEntity<Member> getMember(@PathVariable Long id) {
         Member member = memberService.getMember(id);
+        Member newMember = new Member((long) 2, "1234", "zumgu2", "zumgu@zum.com");
+
+        member.update(newMember);
 
         return new ResponseEntity<>(member, HttpStatus.OK);
     }

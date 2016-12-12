@@ -1,13 +1,20 @@
 package com.zumgu.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.springframework.util.StringUtils;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Created by kanghonggu on 2016-12-07.
@@ -41,8 +48,8 @@ public class Member {
     private Boolean deleted = false;
     @Column(nullable = false)
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "content")
-    @JsonProperty
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
+    @JsonIgnore
     private List<Content> contents = new ArrayList<>();
 
     public Long getId() {
@@ -69,4 +76,7 @@ public class Member {
         this.deleted = delMember.deleted;
     }
 
+    public List<Content> getContents() {
+        return contents;
+    }
 }

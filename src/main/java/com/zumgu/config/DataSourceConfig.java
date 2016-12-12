@@ -9,7 +9,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
  */
 @Configuration
 public class DataSourceConfig {
-
     @Bean
     public HibernateJpaSessionFactoryBean sessionFactory() {
         return new HibernateJpaSessionFactoryBean();

@@ -1,5 +1,7 @@
 package com.zumgu.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
@@ -12,17 +14,20 @@ public class Content {
 
     @Id
     @GeneratedValue
+    @JsonProperty
     private Long id;
 
     @ManyToOne
-    @JoinColumn(foreignKey = @ForeignKey(name="fk_content_member"))
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_content_member"), name = "member_fk_id")
     private Member member;
 
     @Lob
     @Column(nullable = false)
+    @JsonProperty
     private String content;
 
     @Column(nullable = false)
+    @JsonProperty
     private DateTime createdAt;
 
 
