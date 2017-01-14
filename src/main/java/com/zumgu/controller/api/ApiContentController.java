@@ -32,7 +32,7 @@ public class ApiContentController {
     @GetMapping("/")
     public ResponseEntity<List<Content>> getContents () {
         List<Content> contents = contentService.getContents();
-        // create develop branch 11q1
+        // create develop branch 모지
         return new ResponseEntity<>(contents, HttpStatus.OK);
     }
 
