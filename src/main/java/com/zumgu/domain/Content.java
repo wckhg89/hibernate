@@ -30,7 +30,7 @@ public class Content {
     @JsonProperty
     private DateTime createdAt;
 
-    public DateTime getCreatedAt() {
-        return createdAt;
+    public Boolean isAfterCreatedDate (DateTime date) {
+        return this.createdAt.isAfter(date);
     }
 }

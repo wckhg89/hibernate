@@ -1,6 +1,5 @@
 package com.zumgu.service;
 
-import com.google.common.collect.Lists;
 import com.zumgu.domain.Content;
 import com.zumgu.domain.Member;
 import com.zumgu.repository.ContentRepository;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 /**

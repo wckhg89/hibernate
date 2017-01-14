@@ -86,9 +86,7 @@ public class Member {
         List<Content> specificDateContents = Lists.newArrayList();
 
         for (Content content : this.contents) {
-            DateTime contentCreatedAt = content.getCreatedAt();
-
-            if (contentCreatedAt.isAfter(date)) {
+            if (content.isAfterCreatedDate(date)) {
                 specificDateContents.add(content);
             }
         }
