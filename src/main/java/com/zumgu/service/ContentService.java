@@ -28,8 +28,12 @@ public class ContentService {
     private MemberRepository memberRepository;
 
     @Autowired
-    private ContentRepository getContentsOfMember;
+    private ContentRepository contentRepository;
 
+
+    public List<Content> getContents () {
+        return contentRepository.getContents();
+    }
 
     public List<Content> getContentsOfMember (Long memberId) {
         Member member = memberRepository.getMember(memberId);

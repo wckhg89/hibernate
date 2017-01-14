@@ -29,9 +29,9 @@ public class ApiContentController {
     @Autowired
     private ContentService contentService;
 
-    @GetMapping("/{memberId}")
-    public ResponseEntity<List<Content>> getContentsOfMember (@PathVariable Long memberId) {
-        List<Content> contents = contentService.getContentsOfMember(memberId);
+    @GetMapping("/")
+    public ResponseEntity<List<Content>> getContents () {
+        List<Content> contents = contentService.getContents();
 
         return new ResponseEntity<>(contents, HttpStatus.OK);
     }
@@ -40,6 +40,13 @@ public class ApiContentController {
     public ResponseEntity<List<Content>> getContentsOfMemberAfterSpecificDate
             (@PathVariable Long memberId, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") DateTime date) {
         List<Content> contents = contentService.getContentsOfMemberAfterSpecificDate(memberId, date);
+
+        return new ResponseEntity<>(contents, HttpStatus.OK);
+    }
+
+    @GetMapping("/{memberId}")
+    public ResponseEntity<List<Content>> getContentsOfMember (@PathVariable Long memberId) {
+        List<Content> contents = contentService.getContentsOfMember(memberId);
 
         return new ResponseEntity<>(contents, HttpStatus.OK);
     }
