@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.google.common.collect.Lists;
+import org.joda.time.DateTime;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -78,5 +80,18 @@ public class Member {
 
     public List<Content> getContents() {
         return contents;
+    }
+
+    public List<Content> getContentsAfterSpecificDate (DateTime date) {
+        List<Content> specificDateContents = Lists.newArrayList();
+
+        for (Content content : this.contents) {
+            DateTime contentCreatedAt = content.getCreatedAt();
+
+            if (contentCreatedAt.isAfter(date)) {
+                specificDateContents.add(content);
+            }
+        }
+        return specificDateContents;
     }
 }

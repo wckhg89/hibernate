@@ -44,22 +44,8 @@ public class ContentService {
     public List<Content> getContentsOfMemberAfterSpecificDate (Long memberId, DateTime date) {
         Member member = memberRepository.getMember(memberId);
 
-        List<Content> contents = member.getContents();
-        List<Content> specificDateContents = Lists.newArrayList();
-
-        for (Content content : contents) {
-            DateTime contentCreatedAt = content.getCreatedAt();
-
-            if (contentCreatedAt.isAfter(date)) {
-                specificDateContents.add(content);
-            }
-        }
+        List<Content> specificDateContents = member.getContentsAfterSpecificDate(date);
 
         return specificDateContents;
     }
-
-
-
-
-
 }
