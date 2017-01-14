@@ -14,7 +14,6 @@ import javax.persistence.Converter;
 @Converter(autoApply = true)
 public class DateTimeConverter implements AttributeConverter <DateTime, Timestamp>{
 
-
     @Override
     public Timestamp convertToDatabaseColumn(DateTime dateTime) {
         return dateTime != null ? new Timestamp(dateTime.getMillis()) : null;

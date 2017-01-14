@@ -3,22 +3,13 @@ package com.zumgu.controller.api;
 import com.zumgu.domain.Member;
 import com.zumgu.service.MemberService;
 import com.zumgu.utils.Const;
-
 import org.hibernate.HibernateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,18 +25,9 @@ public class ApiMemberController {
 
     private static final Logger log = LoggerFactory.getLogger(ApiMemberController.class);
 
-    @ExceptionHandler(value = HibernateException.class)
-    public ResponseEntity<String> restException (HibernateException e) {
-
-
-        return new ResponseEntity<>(Const.UPDATE_FAILED + " : " + e , HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Member> getMember(@PathVariable Long id) {
         Member member = memberService.getMember(id);
-        /*Member newMember = new Member((long) 1, "123", "kanghonggu", "wckhg89@gmail.com");
-        member.update(newMember);*/
 
         log.error("MSG : {}", "메세지테스트");
         member.getContents().get(0);

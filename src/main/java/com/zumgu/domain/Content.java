@@ -30,5 +30,7 @@ public class Content {
     @JsonProperty
     private DateTime createdAt;
 
-
+    public DateTime getCreatedAt() {
+        return createdAt;
+    }
 }
