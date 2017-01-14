@@ -51,7 +51,7 @@ public class ContentService {
             }
         }
 
-        return null;
+        return specificDateContents;
     }
 
 

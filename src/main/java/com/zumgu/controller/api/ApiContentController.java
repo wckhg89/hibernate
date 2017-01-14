@@ -6,6 +6,7 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,11 +36,11 @@ public class ApiContentController {
         return new ResponseEntity<>(contents, HttpStatus.OK);
     }
 
-    @GetMapping("/{memberId}/{date}")
+    @GetMapping("/{memberId}/after/{date}")
     public ResponseEntity<List<Content>> getContentsOfMemberAfterSpecificDate
-            (@PathVariable Long memberId, @PathVariable DateTime date) {
-        List<Content> contents;
+            (@PathVariable Long memberId, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") DateTime date) {
+        List<Content> contents = contentService.getContentsOfMemberAfterSpecificDate(memberId, date);
 
-        return null;
+        return new ResponseEntity<>(contents, HttpStatus.OK);
     }
 }
