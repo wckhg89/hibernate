@@ -11,9 +11,9 @@ import java.util.List;
  * Created by kanghonggu on 2017-01-31.
  */
 public class InClauseOrder extends Order {
-    private List<Integer> ids;
+    private List<Long> ids;
 
-    public InClauseOrder(List<Integer> ids) {
+    public InClauseOrder(List<Long> ids) {
         super("", true);
 
         this.ids = ids;

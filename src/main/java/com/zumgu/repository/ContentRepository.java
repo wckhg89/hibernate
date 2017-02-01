@@ -1,6 +1,7 @@
 package com.zumgu.repository;
 
 import com.zumgu.domain.Content;
+import com.zumgu.domain.order.InClauseOrder;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -35,7 +36,8 @@ public class ContentRepository {
     public List<Content> getContentsWhereIn (List<Long> ids) {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Content.class)
-                .add(Restrictions.in("id",ids));
+                .add(Restrictions.in("id",ids))
+                .addOrder(new InClauseOrder(ids));
 
         List<Content> contents = criteria.list();
 
