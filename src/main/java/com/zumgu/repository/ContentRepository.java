@@ -4,6 +4,7 @@ import com.zumgu.domain.Content;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,16 @@ public class ContentRepository {
     public List<Content> getContents () {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Content.class);
+
+        List<Content> contents = criteria.list();
+
+        return contents;
+    }
+
+    public List<Content> getContentsWhereIn (List<Long> ids) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Content.class)
+                .add(Restrictions.in("id",ids));
 
         List<Content> contents = criteria.list();
 

@@ -1,9 +1,12 @@
 package com.zumgu.service;
 
+import com.google.common.collect.Lists;
+
 import com.zumgu.domain.Content;
 import com.zumgu.domain.Member;
 import com.zumgu.repository.ContentRepository;
 import com.zumgu.repository.MemberRepository;
+
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,5 +48,11 @@ public class ContentService {
         List<Content> specificDateContents = member.getContentsAfterSpecificDate(date);
 
         return specificDateContents;
+    }
+
+    public List<Content> getContentsWhereIn () {
+        List<Long> ids = Lists.newArrayList(5L,4L,3L,2L,1L);
+
+        return contentRepository.getContentsWhereIn(ids);
     }
 }

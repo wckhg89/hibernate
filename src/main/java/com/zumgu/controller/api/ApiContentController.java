@@ -50,4 +50,11 @@ public class ApiContentController {
 
         return new ResponseEntity<>(contents, HttpStatus.OK);
     }
+
+    @GetMapping("/where/in")
+    public ResponseEntity<List<Content>> getContentsWhereIn () {
+        List<Content> contents = contentService.getContentsWhereIn();
+
+        return new ResponseEntity<>(contents, HttpStatus.OK);
+    }
 }
