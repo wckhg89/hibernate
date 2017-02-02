@@ -33,6 +33,7 @@ public class ContentRepository {
         return contents;
     }
 
+    @SuppressWarnings("unchecked")
     public List<Content> getContentsWhereIn (List<Long> ids) {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Content.class)
